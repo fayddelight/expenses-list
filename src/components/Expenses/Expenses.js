@@ -1,10 +1,19 @@
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../Ui/Card";
+import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
-    return (
+
+const saveFilteredList = (enteredFilteredData) => {
+  const filteredData = enteredFilteredData.filteredYear;
+  console.log(filteredData);
+};
+
+  return (
+    <div>
       <Card className="expenses">
+        <ExpensesFilter onSaveFilteredList={saveFilteredList} />
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
@@ -26,8 +35,9 @@ const Expenses = (props) => {
           date={props.items[3].date}
         />
       </Card>
-    );
-}
+    </div>
+  );
+};
 
 export default Expenses;
 
