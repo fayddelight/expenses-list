@@ -99,8 +99,6 @@ const ExpenseForm = (props) => {
     </form>
   );
 
-  console.log(buttonState);
-
   if (buttonState === true) {
     return fullForm;
   }
