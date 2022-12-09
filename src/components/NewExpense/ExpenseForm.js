@@ -5,8 +5,7 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  const[buttonState, setButtonState] = useState(false);
-
+  const [buttonState, setButtonState] = useState(false);
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -36,8 +35,10 @@ const ExpenseForm = (props) => {
   };
 
   const buttonClickHandler = () => {
-    setButtonState(true);
-  }
+    if (buttonState === true) {
+      setButtonState(false);
+    } else setButtonState(true);
+  };
 
   let cancelButton = (
     <div className="new-expense__actions">
@@ -47,19 +48,7 @@ const ExpenseForm = (props) => {
     </div>
   );
 
-console.log(buttonState);
-
-if (buttonState===true) {
-      <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
-          <div className="new-expense__actions">
-            <button type="submit">Add Expense</button>
-          </div>
-        </div>
-      </form>;
-}
-
-  return (
+  let fullForm = (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -97,6 +86,25 @@ if (buttonState===true) {
       </div>
     </form>
   );
+
+  let form = (
+    <form>
+      <div className="new-expense__controls">
+        <div className="new-expense__actions">
+          <button type="button" onClick={buttonClickHandler}>
+            Add New Expense
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+
+  console.log(buttonState);
+
+  if (buttonState === true) {
+    return fullForm;
+  }
+  else return form;
 };
 
 export default ExpenseForm;
