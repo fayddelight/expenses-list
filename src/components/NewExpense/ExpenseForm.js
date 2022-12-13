@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
+import { addDoc } from "@firebase/firestore";
+import db from "../../firebase-config";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -19,7 +21,7 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const expenseData = {
@@ -28,10 +30,12 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
 
-    props.onSaveExpenseData(expenseData);
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+    await addDoc(db, expenseData);
+
+    // props.onSaveExpenseData(expenseData);
+    // setEnteredTitle("");
+    // setEnteredAmount("");
+    // setEnteredDate("");
   };
 
   const buttonClickHandler = () => {
