@@ -6,16 +6,19 @@ import ExpensesList from "./ExpensesList";
 import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState("2020");
+  const [filteredYear, setFilteredYear] = useState("2022");
 
   const filterChangeHandler = (selectedYear) => {
+    console.log(selectedYear)
     setFilteredYear(selectedYear);
   };
 
   const checkYear = (expense) => {
+    console.log("actual year: " + expense.date.toDate().getFullYear().toString());
+    console.log("filtered year: " + filteredYear);
     return (
       expense.date.toDate().getFullYear().toString() ===
-      filteredYear.filteredYear
+      filteredYear
     );
   };
 

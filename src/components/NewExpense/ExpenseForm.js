@@ -33,9 +33,9 @@ const ExpenseForm = (props) => {
     await addDoc(db, expenseData);
 
     // props.onSaveExpenseData(expenseData);
-    // setEnteredTitle("");
-    // setEnteredAmount("");
-    // setEnteredDate("");
+     setEnteredTitle("");
+     setEnteredAmount("");
+     setEnteredDate("");
   };
 
   const buttonClickHandler = () => {

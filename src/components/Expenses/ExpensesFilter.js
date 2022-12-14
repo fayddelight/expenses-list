@@ -1,19 +1,9 @@
-import React, { useState } from "react";
 import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
-  const [enteredFilter, setEnteredFilter] = useState("");
 
   const filterChangeHandler = (event) => {
-    event.preventDefault();
-
-    setEnteredFilter(event.target.value);
-
-    const filteredData = {
-      filteredYear: enteredFilter,
-    };
-
-    props.onSaveFilteredList(filteredData);
+    props.onSaveFilteredList(event.target.value);
   };
 
   return (
